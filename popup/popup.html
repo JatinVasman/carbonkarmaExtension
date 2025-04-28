@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Footprint Tracker</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="popup-container">
+    <!-- <div class="sync-status" role="status" aria-live="polite">
+        <span class="sync-icon"></span>
+        <span class="sync-text">All changes saved</span>
+        <button class="sync-retry hidden" aria-label="Retry sync">Retry</button>
+    </div> -->
+        <div class="header">
+            <div class="title-section">
+                <h1>CarbonKarma</h1>
+            </div>
+            <!-- Add Wallet Section right after the title -->
+            <section class="wallet-section">
+                <button id="connectWallet" class="wallet-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="Wallet" class="wallet-icon">
+                    Connect Wallet
+                </button>
+                <div id="walletAddress" class="wallet-address" style="display: none;"></div>
+            </section>
+        </div>
+
+        <section class="impact-section">
+            <h2>Real-time Carbon Impact</h2>
+            <div class="metric-box current-session">
+                <span class="label">Current Session</span>
+                <span class="value">6<span class="unit">g CO<sub>2</sub></span></span>
+            </div>
+            
+            <div class="metric-box daily-goal">
+                <span class="label">Daily Limit</span>
+                <span class="value green">1000<span class="unit">g CO<sub>2</sub></span></span>
+            </div>
+            
+            <div class="metric-box streak">
+                <span class="label">Streak</span>
+                <span class="value purple">0 days</span>
+            </div>
+        </section>
+
+        <section class="progress-section">
+            <h2>Daily Progress</h2>
+            <div class="progress-bar">
+                <div class="progress" style="width: 1%"></div>
+            </div>
+        </section>
+
+        <section class="activities-section">
+            <h2>Current Activities</h2>
+            <div class="activity-item">
+                <span class="activity-name">Inactive Tabs</span>
+                <span class="activity-value">6g CO<sub>2</sub>/min</span>
+            </div>
+        </section>
+
+        <section class="carbon-intensity-section">
+            <h2>Local Grid Status</h2>
+            <div class="carbon-intensity">
+                <span class="intensity-value">Loading...</span>
+                <span class="intensity-label">Carbon Intensity:</span>
+            </div>
+            <script>
+                class CarbonService {
+                    constructor() {
+                        this._lastUpdate = null;
+                        this._lastValue = 300; // DEFAULT_CARBON_INTENSITY
+                        this._errorCount = 0;
+                        this._maxRetries = 3;
+                    }
+
+                    async getMockIntensity() {
+                        const now = new Date();
+                        const hour = now.getHours();
+                        let base = 250;
+
+                        if (hour >= 7 && hour <= 10) {
+                            base += 100;
+                        } else if (hour >= 18 && hour <= 22) {
+                            base += 150;
+                        } else if (hour >= 0 && hour <= 5) {
+                            base -= 50;
+                        }
+
+                        const variation = Math.floor(Math.random() * 61) - 30;
+                        const intensity = Math.max(50, Math.min(600, base + variation));
+
+                        this._lastValue = intensity;
+                        this._lastUpdate = now;
+
+                        return {
+                            carbon_intensity: intensity,
+                            status: "mock",
+                            last_update: now,
+                            error: null,
+                        };
+                    }
+
+                    async getCarbonIntensity() {
+                        const now = new Date();
+                        try {
+                            const response = await fetch('https://api.electricitymap.org/v3/carbon-intensity/latest?zone=IN-UP', {
+                                method: 'GET',
+                                headers: {
+                                    'auth-token': 'KnVGxwFL5wrrbWJeA4NO'
+                                }
+                            });
+                            
+                            const data = await response.json();
+                            const intensity = parseInt(data.carbonIntensity || 300);
+                            
+                            this._lastValue = intensity;
+                            this._lastUpdate = now;
+                            this._errorCount = 0;
+
+                            return {
+                                carbon_intensity: intensity,
+                                status: "live",
+                                last_update: now,
+                                error: null
+                            };
+                        } catch (error) {
+                            console.error("Error fetching carbon intensity:", error);
+                            this._errorCount++;
+
+                            if (this._lastUpdate && now - this._lastUpdate < 3600 * 1000) {
+                                return {
+                                    carbon_intensity: this._lastValue,
+                                    status: "cached",
+                                    last_update: this._lastUpdate,
+                                    error: error.message
+                                };
+                            }
+
+                            return {
+                                carbon_intensity: 300,
+                                status: "error",
+                                last_update: null,
+                                error: error.message
+                            };
+                        }
+                    }
+                }
+
+                // Initialize and use the service
+                const carbonService = new CarbonService();
+                
+                async function updateCarbonIntensity() {
+                    const result = await carbonService.getCarbonIntensity();
+                    const intensityValueEl = document.querySelector('.intensity-value');
+                    const intensityLabelEl = document.querySelector('.intensity-label');
+
+                    if (result.status !== 'error') {
+                        const intensity = result.carbon_intensity;
+                        intensityValueEl.textContent = `${Math.round(intensity)} gCO₂eq/kWh`;
+
+                        let level = 'Moderate';
+                        if (intensity < 80) level = 'Low';
+                        else if (intensity > 250) level = 'High';
+
+                        intensityLabelEl.textContent = `Carbon Intensity: ${level} (${result.status})`;
+                    } else {
+                        intensityValueEl.textContent = 'Unavailable';
+                        intensityLabelEl.textContent = 'Could not fetch carbon intensity data';
+                    }
+                }
+
+                // Update immediately and then every 5 minutes
+                updateCarbonIntensity();
+                setInterval(updateCarbonIntensity, 5 * 60 * 1000);
+            </script>
+        </section>
+          
+          
+
+        <section class="ai-section">
+            <h2>Smart Suggestions</h2>
+            <div class="suggestions-container">
+                <div class="suggestions-list">
+                    <!-- AI suggestions will be dynamically inserted here -->
+                </div>
+            </div>
+            <!-- <h2>AI Suggestions</h2> -->
+            <div class="suggestion-box">
+                <p>Consider using browser bookmarks instead of keeping tabs open</p>
+            </div>
+        </section>
+
+        <!-- <section class="data-management-section">
+            <h2>Data Management</h2>
+            <div class="data-actions">
+                <button id="exportData" class="action-button">
+                    <i class="icon-download"></i>
+                    Export Data
+                </button>
+                <button id="importData" class="action-button">
+                    <i class="icon-upload"></i>
+                    Import Data
+                </button>
+                <input type="file" id="importInput" accept=".json" style="display: none;">
+            </div>
+        </section> -->
+
+        <section class="ai-section">
+            <h2>AI Assistant</h2>
+            <div class="ai-container">
+                <div class="ai-message">Ask me anything about your carbon impact!</div>
+                <input type="text" class="ai-input" placeholder="Type your question...">
+            </div>
+        </section>
+
+        <!-- <section class="achievements-section">
+            <h2>Your Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-badge"></div>
+                <div class="achievement-badge"></div>
+            </div>
+        </section> -->
+
+        <div class="notification" style="display: none;"></div>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#" class="settings-link">Settings</a>
+            </div>
+
+            <!-- Share Section -->
+            <section class="card">
+                <h3 class="card-title">Share Your Impact</h3>
+                <div class="social-buttons">
+                    <button class="social-btn linkedin">
+                        <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                        Share on LinkedIn
+                    </button>
+                    <button class="social-btn twitter">
+                        <img src="assets/icons/twitter.svg" alt="Twitter" class="social-icon">
+                        Share on Twitter
+                    </button>
+                    <button class="social-btn instagram">
+                        <img src="assets/icons/instagram.svg" alt="Instagram" class="social-icon">
+                        Share on Instagram
+                    </button>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <!-- <div class="btn-group">
+                <button class="btn btn-primary view-details-btn">View Details</button>
+                <button class="btn btn-secondary reset-data-btn">Reset Data</button>
+            </div> -->
+        </div>
+    </div>
+    <script src="popup.bundle.js" type="module"></script>
+    
+        <!-- Achievement Badges Section -->
+        <section class="achievements-section">
+            <h2>Your Achievements</h2>
+            <div class="badge-container">
+                <div class="badge" id="eco-warrior">
+                    <img src="assets/badges/first-day.svg" alt="Eco Warrior Badge">
+                    <span class="badge-title">First Day</span>
+                </div>
+                <div class="badge" id="energy-saver">
+                    <img src="assets/badges/energy-saver.svg" alt="Energy Saver Badge">
+                    <span class="badge-title">Energy Saver</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="notification" style="display: none;"></div>
+        
+        <footer>
+            <!-- <div class="footer-links">
+                <a href="#" class="settings-link">Settings</a>
+                <!-- <a href="#" class="help-link">Help</a>
+                    <div class="stat-value text-secondary streak-value">0</div>
+                    <div class="stat-label">Day Streak</div> -->
+                <!-- </div> -->
+                <!-- <div class="stat-card">
+                    <div class="stat-value text-accent impact-score">0</div>
+                    <div class="stat-label">Impact Score</div>
+                </div> -->
+            <!-- </div> -->
+
+            <!-- Share Section -->
+           <!-- <section class="card">
+                <h3 class="card-title">Share Your Impact</h3>
+                <div class="social-buttons">
+                    <button class="social-btn linkedin">
+                        <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="social-icon">
+                        Share on LinkedIn
+                    </button>
+                    <button class="social-btn twitter">
+                        <img src="assets/icons/twitter.svg" alt="Twitter" class="social-icon">
+                        Share on Twitter
+                    </button>
+                    <button class="social-btn instagram">
+                        <img src="assets/icons/instagram.svg" alt="Instagram" class="social-icon">
+                        Share on Instagram
+                    </button>
+                </div>
+            </section>  -->
+
+            <!-- Action Buttons -->
+            <!-- <div class="btn-group">
+                <button class="btn btn-primary view-details-btn">View Details</button>
+                <button class="btn btn-secondary reset-data-btn">Reset Data</button>
+            </div> -->
+        </div>
+    </div>
+    <script src="popup.bundle.js" type="module"></script>
+    <script>
+        // MetaMask Integration
+        document.addEventListener('DOMContentLoaded', () => {
+            const connectButton = document.getElementById('connectWallet');
+            const walletAddressDiv = document.getElementById('walletAddress');
+
+            async function connectWallet() {
+                if (typeof window.ethereum !== 'undefined') {
+                    try {
+                        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                        const address = accounts[0];
+                        connectButton.style.display = 'none';
+                        walletAddressDiv.style.display = 'block';
+                        walletAddressDiv.textContent = `${address.substring(0, 6)}...${address.substring(38)}`;
+                    } catch (error) {
+                        console.error('Error connecting to MetaMask:', error);
+                    }
+                } else {
+                    window.open('https://metamask.io/download/', '_blank');
+                }
+            }
+
+            connectButton.addEventListener('click', connectWallet);
+
+            // Handle account changes
+            if (window.ethereum) {
+                window.ethereum.on('accountsChanged', function (accounts) {
+                    if (accounts.length > 0) {
+                        walletAddressDiv.textContent = `${accounts[0].substring(0, 6)}...${accounts[0].substring(38)}`;
+                    } else {
+                        connectButton.style.display = 'block';
+                        walletAddressDiv.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

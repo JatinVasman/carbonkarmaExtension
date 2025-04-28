@@ -1,0 +1,37 @@
+{
+    "name": "carbonkarma",
+    "version": "1.0.0",
+    "description": "Track and reduce your digital carbon footprint with AI-powered suggestions",
+    "main": "background/tracker.js",
+    "scripts": {
+        "build": "webpack --mode production && copy sw.js dist\\",
+        "dev": "webpack --mode development --watch",
+        "test": "jest",
+        "test:integration": "jest tests/integration",
+        "test:performance": "node tests/performance/benchmark.js",
+        "test:coverage": "jest --coverage",
+        "test:watch": "jest --watch",
+        "analyze": "webpack-bundle-analyzer stats.json"
+    },
+    "dependencies": {
+        "axios": "^1.8.4",
+        "chart.js": "^4.4.9",
+        "pako": "^2.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.26.10",
+        "@babel/preset-env": "^7.26.9",
+        "autoprefixer": "^10.4.21",
+        "babel-loader": "^10.0.0",
+        "copy-webpack-plugin": "^13.0.0",
+        "css-loader": "^7.1.2",
+        "dotenv-webpack": "^8.1.0",
+        "postcss-loader": "^8.1.1",
+        "style-loader": "^4.0.0",
+        "tailwindcss": "^4.1.4",
+        "webextension-polyfill": "^0.12.0",
+        "webpack": "^5.99.6",
+        "webpack-bundle-analyzer": "^4.9.0",
+        "webpack-cli": "^6.0.1"
+    }
+}

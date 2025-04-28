@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CarbonKarma - Data Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../popup/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brutal-green': '#00FF7F',
+                        'brutal-yellow': '#FFE600',
+                        'brutal-pink': '#FF69B4',
+                        'brutal-blue': '#00BFFF',
+                        'brutal-black': '#000000'
+                    },
+                    boxShadow: {
+                        'brutal': '4px 4px 0 0 #000000',
+                        'brutal-lg': '8px 8px 0 0 #000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+        * {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .chart-container {
+            height: 300px;
+            margin-bottom: 2rem;
+        }
+        .brutal-border {
+            border: 3px solid #000000;
+        }
+    </style>
+</head>
+<body class="bg-[#FFFDFA] p-8">
+    <div class="max-w-6xl mx-auto space-y-8">
+        <!-- Header -->
+        <div class="brutal-border bg-brutal-green p-6 shadow-brutal">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="12" y1="6" x2="12" y2="18"/>
+                        <line x1="6" y1="12" x2="18" y2="12"/>
+                    </svg>
+                    <h1 class="text-4xl font-bold">Carbon Analytics</h1>
+                </div>
+                <button class="export-btn brutal-border bg-white p-3 font-bold shadow-brutal hover:shadow-brutal-lg transition-shadow">
+                    Export Data
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Emissions Over Time -->
+            <div class="brutal-border bg-white p-6 shadow-brutal">
+                <h2 class="text-2xl font-bold mb-4">Emissions Timeline</h2>
+                <div class="chart-container">
+                    <canvas id="emissions-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Hourly Usage -->
+            <div class="brutal-border bg-white p-6 shadow-brutal">
+                <h2 class="text-2xl font-bold mb-4">Daily Pattern</h2>
+                <div class="chart-container">
+                    <canvas id="hourly-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Category Distribution -->
+            <div class="brutal-border bg-white p-6 shadow-brutal">
+                <h2 class="text-2xl font-bold mb-4">Usage Categories</h2>
+                <div class="chart-container">
+                    <canvas id="category-chart"></canvas>
+                </div>
+            </div>
+
+            <!-- Comparison -->
+            <div class="brutal-border bg-white p-6 shadow-brutal">
+                <h2 class="text-2xl font-bold mb-4">Usage Comparison</h2>
+                <div class="chart-container">
+                    <canvas id="comparison-chart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="brutal-border bg-white p-6 shadow-brutal">
+            <h2 class="text-2xl font-bold mb-4">Key Insights</h2>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="brutal-border bg-brutal-green p-4">
+                    <div class="text-3xl font-bold total-reduction mb-1">0</div>
+                    <div class="text-sm font-bold">Total CO2 Reduced</div>
+                </div>
+                <div class="brutal-border bg-brutal-yellow p-4">
+                    <div class="text-3xl font-bold peak-hour mb-1">0</div>
+                    <div class="text-sm font-bold">Peak Usage Hour</div>
+                </div>
+                <div class="brutal-border bg-brutal-pink p-4">
+                    <div class="text-3xl font-bold top-category mb-1">-</div>
+                    <div class="text-sm font-bold">Most Active Category</div>
+                </div>
+                <div class="brutal-border bg-brutal-blue p-4">
+                    <div class="text-3xl font-bold efficiency-score mb-1">0</div>
+                    <div class="text-sm font-bold">Efficiency Score</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="visualization.bundle.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "name": "CarbonKarma",
+  "description": "Track and reduce your carbon footprint while browsing the web",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.bundle.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": {
+      "16": "assets/icons/icon-16x16.png",
+      "32": "assets/icons/icon-32x32.png",
+      "128": "assets/icons/icon-128x128.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "CarbonKarma"
+  },
+  "icons": {
+    "16": "assets/icons/icon-16x16.png",
+    "32": "assets/icons/icon-32x32.png",
+    "128": "assets/icons/icon-128x128.png"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.bundle.js"]
+  }],
+  "web_accessible_resources": [{
+    "resources": [
+      "pages/*",
+      "popup/*",
+      "assets/*"
+    ],
+    "matches": ["<all_urls>"]
+  }],
+  "permissions": [
+    "storage",
+    "tabs",
+    "background",
+    "webRequest",
+    "alarms",
+    "notifications",
+    "storage.sync",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "https://api.electricitymap.org/*"
+  ],
+  "optional_permissions": [
+    "geolocation"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline'"
+  },
+  "options_page": "pages/settings.html",
+  "author": "CarbonKarma Team",
+  "homepage_url": "https://carbonkarma.io",
+  "minimum_chrome_version": "88",
+  "offline_enabled": true,
+  "short_name": "CKarma"
+}

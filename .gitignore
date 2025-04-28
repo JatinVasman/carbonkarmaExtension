@@ -1,0 +1,39 @@
+# Ignoring unnecessary files and folders
+node_modules/
+*.log
+*.tmp
+*.cache
+*.bak
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+coverage/
+dist/
+build/
+# Ignoring test-related files and folders
+tests/e2e/
+tests/integration/
+tests/mocks/
+tests/performance/
+tests/popup/
+tests/services/
+# Ignoring compiled or generated files
+*.min.js
+*.min.css
+*.map
+# Ignoring specific assets and temporary files
+assets/badges/
+assets/icons/
+popup/assets/icons/
+# Ignoring documentation and configuration backups
+docs/
+*.md
+*.config.js
+*.config.json
+*.config.yaml
+*.pacakage-lock.json
+*.env
+# Ignoring temporary files created by editors

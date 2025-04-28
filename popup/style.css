@@ -1,0 +1,3263 @@
+/* Base styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #1f1c2c, #928dab);
+    color: #fff;
+    padding: 1.5rem;
+  }
+  
+  /* Glass effect container */
+  .popup-container {
+    max-width: 960px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Headers */
+  h1, h2, h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+  
+  .status-badge {
+    margin-top: 0.5rem;
+    color: #b2fab4;
+  }
+  
+  /* Metric Boxes */
+  .metric-box {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 1rem;
+    border-radius: 16px;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+  
+  .label {
+    font-size: 1rem;
+    color: #ddd;
+  }
+  
+  .value {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .green {
+    color: #a0f7b5;
+  }
+  
+  .purple {
+    color: #d0a5ff;
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 14px;
+    border-radius: 7px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  
+  .progress {
+    height: 100%;
+    background: linear-gradient(to right, #76ff03, #00e5ff);
+    transition: width 0.4s ease;
+  }
+  
+  /* Activities */
+  .activity-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+  }
+  
+  /* Carbon Intensity */
+  .carbon-intensity {
+    text-align: center;
+  }
+  
+  .intensity-value {
+    font-size: 1rem;
+  }
+  
+  .intensity-label {
+    color: #ccc;
+  }
+  
+  /* AI Suggestions */
+  .suggestion-box, .ai-container, .data-actions {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .ai-input {
+    width: 100%;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  
+  .ai-input::placeholder {
+    color: #ccc;
+  }
+  
+  /* Buttons */
+  .action-button, .btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-right: 0.5rem;
+  }
+  
+  .action-button:hover, .btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  
+  .btn-primary {
+    background: #00e676;
+    color: #000;
+  }
+  
+  .btn-secondary {
+    background: #ff1744;
+    color: #fff;
+  }
+  
+  /* Achievements */
+  .achievements-grid {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .achievement-badge {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+  }
+  
+  /* Footer */
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: #90caf9;
+    text-decoration: none;
+    margin: 0.5rem;
+  }
+  
+  .card {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+  
+  .social-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-btn {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .social-icon {
+    width: 20px;
+    margin-right: 8px;
+  }
+
+/* Achievement Badges Styles */
+.achievements-section {
+    margin-top: 20px;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+    
+    .badge-title {
+        color: #aaa;
+    }
+}
+.achievements-section h3 {
+    margin: 0 0 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.badge-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.badge.earned {
+    opacity: 1;
+}
+
+.badge img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.badge-title {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .achievements-section {
+        border-color: #333;
+    }
+    
+    .achievements-section h3 {
+        color: #fff;
+    }
+
+   .badge-title {
+        color: #aaa;
+    }
+}
+
+.wallet-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.wallet-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: linear-gradient(90deg, #f6851b 0%, #e2761b 100%);
+    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px rgba(246, 133, 27, 0.15);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+.wallet-btn:hover, .wallet-btn:focus {
+    background: linear-gradient(90deg, #e2761b 0%, #f6851b 100%);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 4px 16px rgba(246, 133, 27, 0.25);
+}
+
+.wallet-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 2px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.wallet-address {
+    margin-top: 0.7rem;
+    padding: 0.5rem 1rem;
+    background: #f7f7f7;
+    border-radius: 8px;
+    font-family: 'Fira Mono', 'Consolas', monospace;
+    font-size: 1rem;
+    color: #333;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    word-break: break-all;
+    display: none;
+}
